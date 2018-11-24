@@ -1,2 +1,2 @@
 # trava-build-11-dcevm
-Travis script to build DCEVM 11
+Dcevm11 binaries build on Travis build farm driven by AdoptOpenJDK build scripts!
