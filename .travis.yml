@@ -16,7 +16,7 @@ before_script:
 script:
 - source install-jdk.sh -f 10
 - bash -c "cd openjdk-build && export LOG=info && ./makejdk-any-platform.sh  --build-variant
-  dcevm --target-file-name java11-openjdk-dcevm-${TRAVIS_OS_NAME}.tar.gz jdk11u"
+  dcevm --branch dcevm11 --target-file-name java11-openjdk-dcevm-${TRAVIS_OS_NAME}.tar.gz jdk11u"
 deploy:
   provider: releases
   api_key:
