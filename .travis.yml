@@ -32,8 +32,8 @@ before_script:
 script:
   - if [[ $OS_BUILD == "linux" || $OS_BUILD == "osx" ]]; then
       source install-jdk.sh -f 10;
-      bash -c "cd openjdk-build && export LOG=info && ./makejdk-any-platform.sh --tag ${SOURCE_JDK_TAG} --build-variant
-        dcevm --branch dcevm11 --configure-args '-disable-warnings-as-errors' --target-file-name java11-openjdk-dcevm-${TRAVIS_OS_NAME}.tar.gz jdk11u";
+      bash -c "cd openjdk-build && export LOG=info && ./makejdk-any-platform.sh --tag \"${SOURCE_JDK_TAG}\" --build-variant dcevm --branch dcevm11 
+        --configure-args '-disable-warnings-as-errors' --target-file-name java11-openjdk-dcevm-${TRAVIS_OS_NAME}.tar.gz jdk11u";
     fi
   - if [[ $OS_BUILD == "windows" ]]; then
       powershell -Command "C:\tools\cygwin\bin\bash.exe -c './build_windows.sh'";
