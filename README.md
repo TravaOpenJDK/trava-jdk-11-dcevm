@@ -1,6 +1,6 @@
-Trava dcevm 11 build
-====================
-Dcevm-11 building on Travis, driven by AdoptOpenJDK scripts.
+Trava dcevm-11 
+==============
+Dcevm-11 built on Travis, driven by AdoptOpenJDK scripts.
 
 ## Motivation:
 
