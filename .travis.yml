@@ -21,14 +21,13 @@ before_script:
   - if [[ $OS_BUILD == "linux" || $OS_BUILD == "osx" ]]; then
       unset -v _JAVA_OPTIONS;
       wget https://github.com/sormuras/bach/raw/master/install-jdk.sh;
-      git clone --depth 1 https://github.com/TravaOpenJDK/openjdk-build.git;
     fi
   - if [[ $OS_BUILD == "windows" ]]; then
       unset -v _JAVA_OPTIONS;
       git config --system core.longpaths true;
       git config --global core.autocrlf false;
-      git clone --depth 1 https://github.com/skybber/openjdk-build.git;
     fi
+  - git clone --depth 1 https://github.com/TravaOpenJDK/openjdk-build.git;
 script:
   - if [[ $OS_BUILD == "linux" || $OS_BUILD == "osx" ]]; then
       source install-jdk.sh -f 10;
