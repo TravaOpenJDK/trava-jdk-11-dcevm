@@ -25,8 +25,14 @@ before_script:
   - unset -v _JAVA_OPTIONS;
   - git clone --depth 1 https://github.com/TravaOpenJDK/openjdk-build.git;
 script:
+  - export JDK10_BOOT_DIR="$PWD/openjdk-build/jdk-10"
+  - if [[ $OS_BUILD == "linux" ]]; then
+      wget -q -O - "https://api.adoptopenjdk.net/v2/binary/releases/openjdk10?os=linux&release=latest&arch=x64" | tar xpzf - --strip-components=2 -C ${JDK10_BOOT_DIR};
+    fi
+  - if [[ $OS_BUILD == "osx" ]]; then
+      wget -q -O - 'https://api.adoptopenjdk.net/v2/binary/releases/openjdk10?os=mac&release=latest' | tar xpzf - --strip-components=2 -C ${JDK10_BOOT_DIR};
+    fi
   - if [[ $OS_BUILD == "linux" || $OS_BUILD == "osx" ]]; then
-      source install-jdk.sh -f 10;
       bash -c "cd openjdk-build && export LOG=info && ./makejdk-any-platform.sh --tag \"${SOURCE_JDK_TAG}\" --build-variant dcevm --branch dcevm11 
         --configure-args '-disable-warnings-as-errors' --target-file-name java11-openjdk-dcevm-${TRAVIS_OS_NAME}.tar.gz jdk11u";
     fi
