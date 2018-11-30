@@ -26,6 +26,7 @@ before_script:
   - git clone --depth 1 https://github.com/TravaOpenJDK/openjdk-build.git;
 script:
   - export JDK10_BOOT_DIR="$PWD/openjdk-build/jdk-10"
+  - mkdir -p "$JDK10_BOOT_DIR"
   - if [[ $OS_BUILD == "linux" ]]; then
       wget -q -O - "https://api.adoptopenjdk.net/v2/binary/releases/openjdk10?os=linux&release=latest&arch=x64" | tar xpzf - --strip-components=2 -C ${JDK10_BOOT_DIR};
     fi
