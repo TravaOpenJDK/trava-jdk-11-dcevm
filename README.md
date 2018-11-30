@@ -16,7 +16,9 @@ clicks:
 * Change the **deploy** part in `.travis.yml` to upload the result to your repository
 * Create tagged commit and wait for your binaries!
 
-### HOWTO deploy release with existing TAG
+## HOWTO deploy new release
+
+### Release with existing TAG
 * If this repository has some updates since last tagged, then move tag:
 ```
     git push origin :refs/tags/${SOURCE_JDK_TAG}
@@ -26,6 +28,6 @@ clicks:
 * Cleanup binaries from Releases/
 * Trigger tagged job on Travis (if not triggered automatically)
 
-### HOWTO make release with new TAG
+### Release with new TAG
 * Create empty commit in this repository and tag it with exactly same tag as is in the source JDK repository (dcevm-11.X.Y+Z)
 * Appropriate a new tagged job should be created on Travis automatically
