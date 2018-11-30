@@ -35,7 +35,7 @@ script:
     fi
   - if [[ $OS_BUILD == "linux" || $OS_BUILD == "osx" ]]; then
       bash -c "cd openjdk-build && export LOG=info && ./makejdk-any-platform.sh --tag \"${SOURCE_JDK_TAG}\" --build-variant dcevm --branch dcevm11 --disable-test-image
-        --configure-args '-disable-warnings-as-errors' --target-file-name java11-openjdk-dcevm-${TRAVIS_OS_NAME}.tar.gz jdk11u";
+        --jdk-boot-dir ${JDK_BOOT_DIR} --configure-args '-disable-warnings-as-errors' --target-file-name java11-openjdk-dcevm-${TRAVIS_OS_NAME}.tar.gz jdk11u";
     fi
   - if [[ $OS_BUILD == "windows" ]]; then
       powershell -Command "C:\tools\cygwin\bin\bash.exe -c './build_windows.sh'";
