@@ -1,6 +1,6 @@
 Trava dcevm-11
 ==============
-The main objective of this project is to make transparent build of Dcevm-11 and integrated it with HotswapAgent. Build is done on Travis using [AdoptOpenJDK build scripts](https://github.com/AdoptOpenJDK/openjdk-build).
+The main objective of this project is to make transparent build of Dcevm-11 and integrated it with [HotswapAgent](https://github.com/HotswapProjects/HotswapAgent). Build is done on Travis using [AdoptOpenJDK build scripts](https://github.com/AdoptOpenJDK/openjdk-build).
 
 ## Install
 Download [windows/linux/macos binaries](https://github.com/TravaOpenJDK/trava-jdk-11-dcevm/releases), unpack and set JAVA_HOME to it’s location (or add it as JDK to your IDE).
