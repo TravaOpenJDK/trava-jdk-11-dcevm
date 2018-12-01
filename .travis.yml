@@ -1,5 +1,5 @@
 language: cpp
-env: SOURCE_JDK_TAG=dcevm-11.0.1+1
+env: SOURCE_JDK_TAG=dcevm-11.0.1+1 
 matrix:
   include:
   - os: osx
@@ -26,6 +26,7 @@ before_script:
   - git clone --depth 1 https://github.com/TravaOpenJDK/openjdk-build.git;
 script:
   - export JDK_BOOT_DIR="$PWD/openjdk-build/jdk-10"
+  - export HSWAP_AGENT_DOWNLOAD_URL=https://github.com/HotswapProjects/HotswapAgent/releases/download/1.3.1-SNAPSHOT/hotswap-agent-1.3.1-SNAPSHOT.jar
   - mkdir -p "$JDK_BOOT_DIR"
   - if [[ $OS_BUILD == "linux" ]]; then
       wget -q -O - "https://api.adoptopenjdk.net/v2/binary/releases/openjdk10?os=linux&release=latest&arch=x64" | tar xpzf - --strip-components=2 -C ${JDK_BOOT_DIR};
@@ -35,7 +36,7 @@ script:
     fi
   - if [[ $OS_BUILD == "linux" || $OS_BUILD == "osx" ]]; then
       bash -c "cd openjdk-build && export LOG=info && ./makejdk-any-platform.sh --tag \"${SOURCE_JDK_TAG}\" --build-variant dcevm --branch dcevm11 --disable-test-image
-        --jdk-boot-dir ${JDK_BOOT_DIR} --configure-args '-disable-warnings-as-errors' --target-file-name java11-openjdk-dcevm-${TRAVIS_OS_NAME}.tar.gz jdk11u";
+        --jdk-boot-dir ${JDK_BOOT_DIR} --hswap-agent-download-url \"${HSWAP_AGENT_DOWNLOAD_URL}\" --configure-args '-disable-warnings-as-errors' --target-file-name java11-openjdk-dcevm-${TRAVIS_OS_NAME}.tar.gz jdk11u";
     fi
   - if [[ $OS_BUILD == "windows" ]]; then
       powershell -Command "C:\tools\cygwin\bin\bash.exe -c './build_windows.sh'";
