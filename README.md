@@ -1,5 +1,5 @@
-Trava dcevm-11 (Light)
-======================
+Trava dcevm-11
+==============
 The main objective of this project is to make transparent build of Dcevm-11 and integrated it with HotswapAgent. Build is done on Travis using [AdoptOpenJDK build scripts](https://github.com/AdoptOpenJDK/openjdk-build).
 
 ## Install
