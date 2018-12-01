@@ -1,5 +1,7 @@
 Trava dcevm-11
 ==============
+[![Build Status](https://travis-ci.org/TravaOpenJDK/trava-jdk-11-dcevm.svg?branch=master)](https://travis-ci.org/TravaOpenJDK/trava-jdk-11-dcevm)
+
 The main objective of this project is to make transparent build of [dcevm-11 sources](https://github.com/HotswapProjects/openjdk-jdk11u) and integrate it with [HotswapAgent](https://github.com/HotswapProjects/HotswapAgent). Build is done on [Travis](https://travis-ci.org/TravaOpenJDK/trava-jdk-11-dcevm) using AdoptOpenJDK build [scripts](https://github.com/AdoptOpenJDK/openjdk-build).
 
 ## Install
