@@ -1,6 +1,6 @@
 Trava dcevm-11
 ==============
-[![Build Status](https://travis-ci.org/TravaOpenJDK/trava-jdk-11-dcevm.svg?branch=master)](https://travis-ci.org/TravaOpenJDK/trava-jdk-11-dcevm)
+[![Build Status](https://travis-ci.org/TravaOpenJDK/trava-jdk-11-dcevm.svg?branch=master)](https://travis-ci.org/TravaOpenJDK/trava-jdk-11-dcevm) [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 The main objective of this project is to provide dcevm-11 binaries. Build is transparent as much as possible. [dcevm-11 source code](https://github.com/HotswapProjects/openjdk-jdk11u) is build on [Travis](https://travis-ci.org/TravaOpenJDK/trava-jdk-11-dcevm) and the destination binaries are bundled with [HotswapAgent](https://github.com/HotswapProjects/HotswapAgent). Building is exclusively based on AdoptOpenJDK [scripts](https://github.com/AdoptOpenJDK/openjdk-build).
 
