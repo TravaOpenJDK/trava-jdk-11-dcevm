@@ -33,5 +33,7 @@ clicks:
 * Trigger tagged job on Travis (if not triggered automatically)
 
 ### Release with new TAG
-* Create empty commit in this repository and tag it with exactly same tag as is in the source JDK repository (dcevm-11.X.Y+Z)
+Let's jdk source repository has new tag of value **TAGVAL**
+* Set variable `SOURCE_JDK_TAG=` in `.tarvis.yml` to **TAGVAL**
+* Commit and tag commit with **TAGVAL**
 * Appropriate a new tagged job should be created on Travis automatically
