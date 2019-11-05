@@ -32,7 +32,8 @@ script:
       wget -q -O - "https://api.adoptopenjdk.net/v2/binary/releases/openjdk11?os=linux&release=jdk-11.0.3%2B7&type=jdk&arch=x64" | tar xpzf - --strip-components=1 -C ${JDK_BOOT_DIR};
     fi
   - if [[ $OS_BUILD == "osx" ]]; then
-      wget -q -O - 'https://api.adoptopenjdk.net/v2/binary/releases/openjdk11?os=mac&release=jdk-11.0.3%2B7&type=jdk' | tar xpzf - --strip-components=1 -C ${JDK_BOOT_DIR};
+      wget -q -O - 'https://api.adoptopenjdk.net/v2/binary/releases/openjdk11?os=mac&release=jdk-11.0.3%2B7&type=jdk' | tar xpzf - --strip-components=2 -C ${JDK_BOOT_DIR};
+      export JDK_BOOT_DIR=${JDK_BOOT_DIR}/Home;
     fi
   - if [[ $OS_BUILD == "linux" || $OS_BUILD == "osx" ]]; then
       bash -c "cd openjdk-build && export LOG=info && ./makejdk-any-platform.sh --tag \"${SOURCE_JDK_TAG}\" --build-variant dcevm --branch dcevm11 --disable-test-image
