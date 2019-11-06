@@ -1,5 +1,5 @@
 language: cpp
-env: SOURCE_JDK_TAG=dcevm-11.0.1+8 
+env: SOURCE_JDK_TAG=dcevm-11.0.4+1
 matrix:
   include:
   - os: osx
