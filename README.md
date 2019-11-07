@@ -22,6 +22,9 @@ clicks:
 
 ## HOWTO deploy a new release
 
+## New branch
+In case a new branch is created in source repository, then modify `--branch` argument to new branch.
+
 ### Release with existing TAG
 * If this repository has some updates since last tagged, then move tag:
 ```
