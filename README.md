@@ -2,7 +2,7 @@ Trava dcevm-11
 ==============
 [![Build Status](https://api.travis-ci.org/TravaOpenJDK/trava-jdk-11-dcevm.svg)](https://travis-ci.org/TravaOpenJDK/trava-jdk-11-dcevm) [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
-The main objective of this project is to provide dcevm-11 binaries. Build is transparent as much as possible. [dcevm-11 source code](https://github.com/HotswapProjects/openjdk-jdk11u-dcevm) is build on [Travis](https://travis-ci.org/TravaOpenJDK/trava-jdk-11-dcevm) and the destination binaries are bundled with [HotswapAgent](https://github.com/HotswapProjects/HotswapAgent). Building is exclusively based on AdoptOpenJDK [scripts](https://github.com/AdoptOpenJDK/openjdk-build).
+The main objective of this project is to provide dcevm-11 binaries. Build is transparent as much as possible. [dcevm-11 source code](https://github.com/HotswapProjects/openjdk-jdk11u-dcevm) is build on [Travis](https://travis-ci.org/TravaOpenJDK/trava-jdk-11-dcevm) and the destination binaries are bundled with [HotswapAgent](https://github.com/HotswapProjects/HotswapAgent). Building is exclusively based on [modified](https://github.com/TravaOpenJDK/openjdk-build/tree/travaopenjdk) AdoptOpenJDK [scripts](https://github.com/AdoptOpenJDK/openjdk-build).
 
 ## Install
 Download [windows/linux/macos binaries](https://github.com/TravaOpenJDK/trava-jdk-11-dcevm/releases), unpack and set JAVA_HOME to it's location (or add it as JDK to your IDE).
