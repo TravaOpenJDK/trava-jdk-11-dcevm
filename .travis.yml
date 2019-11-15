@@ -47,7 +47,7 @@ script:
 deploy:
   provider: releases
   api_key:
-    secure: $API_KEY
+    secure: k5cEhFlDLhjUkg1Urz/YfHfOWjHRRpQRDhAIrau5VE2H1x47b5q4OZIBJRkIx8Z3hkgIUuoTEqPoRJhokmBT9u2S7uiHexsc1F3Y1NN8Qf7cskmz04KBzJ7AMPuGP/pd/rTqpm9m/Ommm6+GTbyNwbwyPBEaHHfj9vQmzbiA1O+Xt5xdn/mG6bBAvs5ETXkalrYiSlEcdbESVefnN+YXTTQpsrSJ0S6U0q9Wlcn+ETc0HnQtkG8+6EisrsxWpUamAZoNqsXDVMMDmsp8WaH+KE7v5H2YdwjF9asNxpNERLXEU9pLIEcMd5koX13121vdJTIgLhGlCxK60yVTTMSwKn1mFrFED138DAO3J6bZY260vJGjHKvrKWpzYfTTYY9NKH/JXIAJPhGe6AQthvjTq+EnavIotzetnAuIngkYeqCqTPQDyFkKwra16mgp9VlYTqWgW5yarK87SWlUdZ8AgkO15QrU5Tyq/fk4jMxHsmmtXsEssxUr43weZVaPlTJqznFYmKdnnKfuPIbtuaJDlFbi2TxA783DBU4yJkEt0XsppDJXEyiLwhIXg4L4IMO88XUVQAQTXEB2WDEMK+VToP4dqjEVdwLLjjrJGY5qSKVRNjQerU54+7IiUdCR/UNa+/bIeO9/ace56qHUx7VUpgEVU1T84UXuSYI8XYNJgFQ=
   file_glob: true
   file: openjdk-build/workspace/target/*
   skip_cleanup: true
