@@ -36,10 +36,10 @@ clicks:
 ## HOWTO deploy a new release
 
 ## New branch
-In case a new branch is created in source repository, then modify `--branch` argument to new branch.
+If a new branch is created in source repository, then modify `--branch` parameter in `.travis.yml` to the new branch.
 
 ### Release with existing TAG
-* If this repository has some updates since last tagged, then move tag:
+* If repository has some updates since last tagged, then move tag:
 ```
     git push origin :refs/tags/${SOURCE_JDK_TAG}
     git tag -fa ${SOURCE_JDK_TAG}
