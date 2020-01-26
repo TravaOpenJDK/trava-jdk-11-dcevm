@@ -26,7 +26,7 @@ before_script:
   - git clone --depth 1 --branch travaopenjdk https://github.com/TravaOpenJDK/openjdk-build.git;
 script:
   - export JDK_BOOT_DIR="$PWD/openjdk-build/jdk-11"
-  - export HSWAP_AGENT_DOWNLOAD_URL=https://github.com/HotswapProjects/HotswapAgent/releases/download/1.3.1-SNAPSHOT/hotswap-agent-1.3.1-SNAPSHOT.jar
+  - export HSWAP_AGENT_DOWNLOAD_URL=https://github.com/HotswapProjects/HotswapAgent/releases/download/RELEASE-1.4.0/hotswap-agent-1.4.0.jar
   - mkdir -p "$JDK_BOOT_DIR"
   - if [[ $OS_BUILD == "linux" ]]; then
       wget -q -O - "https://api.adoptopenjdk.net/v2/binary/releases/openjdk11?os=linux&release=jdk-11.0.3%2B7&type=jdk&arch=x64" | tar xpzf - --strip-components=1 -C ${JDK_BOOT_DIR};
