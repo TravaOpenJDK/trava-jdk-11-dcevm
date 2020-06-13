@@ -27,7 +27,7 @@ Everything is configured for you, just run your application with downloaded JDK.
 
 Option **-XXaltjvm=dcevm** is not supported starting with dcevm11. There is full java-11-openjdk distribution instead of it.
 
-**WARNING**: OpenJDK-hotswap (dcevm) is not intended to use as 'system' JDK, since it uses serial GC by default, however it is possible to use *G1* now.
+**WARNING**: OpenJDK-hotswap (dcevm) is not intended to use as a system JDK, since it uses serial GC by default, however it is possible to use *G1* now.
 
 ### Content
 * java11-openjdk-dcevm-linux.tar.gz - **linux** x64 JDK binary bundled with latest SNAPHOT release of hotswap-agent.jar
