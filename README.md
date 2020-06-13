@@ -23,18 +23,18 @@ Download [windows/linux/macos binaries](https://github.com/TravaOpenJDK/trava-jd
 ## Configure
 Everything is configured for you, just run your application with downloaded JDK. For HotswapAgent configuration look at [hotswapagent.org](http://hotswapagent.org/)
 
-# Detail Info
+## Additional Info
 
 Option **-XXaltjvm=dcevm** is not supported starting with dcevm11. There is full java-11-openjdk distribution instead of it.
 
 **WARNING**: OpenJDK-hotswap (dcevm) is not intended to use as 'system' JDK, since it uses serial GC by default, however it is possible to use *G1* now.
 
-## Content
+### Content
 * java11-openjdk-dcevm-linux.tar.gz - **linux** x64 JDK binary bundled with latest SNAPHOT release of hotswap-agent.jar
 * java11-openjdk-dcevm-windows.zip - **windows** x64 JDK binary bundled with latest SNAPHOT release of hotswap-agent.jar
 * java11-openjdk-dcevm-osx.tar.gz - **macos** JDK binary bundled with latest SNAPHOT release of hotswap-agent.jar
 
-# HOWTO
+## HOWTO
 
 ### Disable integrated HotswapAgent
 Use option `-XX:+DisableHotswapAgent `
@@ -70,7 +70,7 @@ OpenJDK 64-Bit Server VM (build 11+0, mixed mode)
 * Newest HotswapAgent 1.4.1
 
 
-# Build your binaries!
+## Build your binaries!
 It is not necessary to use supplied binaries, you can build own binaries. It is simple and it can be done in several
 clicks:
 
@@ -80,12 +80,12 @@ clicks:
 * Create tagged commit and wait for Travis to build your binaries!
 
 
-# HOWTO deploy a new release
+## HOWTO deploy a new release
 
-## New branch
+### New branch
 If a new branch is created in source repository, then modify `--branch` parameter in `.travis.yml` to the new branch.
 
-## Release with existing TAG
+### Release with existing TAG
 * If repository has some updates since last tagged, then move tag:
 ```
     git push origin :refs/tags/${SOURCE_JDK_TAG}
@@ -95,7 +95,7 @@ If a new branch is created in source repository, then modify `--branch` paramete
 * Cleanup binaries from Releases/
 * Trigger tagged job on Travis (if not triggered automatically)
 
-## Release with new TAG
+### Release with new TAG
 Let's jdk source repository has new tag of value **TAGVAL**
 * Set variable `SOURCE_JDK_TAG=` in `.tarvis.yml` to **TAGVAL**
 * Commit and tag commit with **TAGVAL**
