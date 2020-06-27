@@ -21,7 +21,7 @@ Trava is a build farm created and maintained by [HotswapProjects](https://github
 Download [windows/linux/macos binaries](https://github.com/TravaOpenJDK/trava-jdk-11-dcevm/releases), unpack and set JAVA_HOME to it's location (or add it as JDK to your IDE).
 
 ## Configure
-Everything is configured for you, just run your application with downloaded JDK. For HotswapAgent configuration look at [hotswapagent.org](http://hotswapagent.org/)
+Everything is configured for you, just run your application with downloaded JDK. For HotswapAgent configuration look at [hotswapagent.org](http://hotswapagent.org/).
 
 ## Additional Info
 
@@ -35,6 +35,10 @@ Option **-XXaltjvm=dcevm** is not supported starting with dcevm11. There is a fu
 * java11-openjdk-dcevm-osx.tar.gz - **macos** JDK binary bundled with latest SNAPHOT release of hotswap-agent.jar
 
 ## HOWTO
+
+### Optimize redefinition
+
+Use `XX:+UseHotswapDeoptExclusion` to optimize redefinition by keeping `java.*` and `jdk.*` native code in code cache. This should improve performance of redefinition especially on large projects.
 
 ### Disable integrated HotswapAgent
 Use option `-XX:+DisableHotswapAgent `
