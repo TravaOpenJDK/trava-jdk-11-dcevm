@@ -36,6 +36,9 @@ Option **-XXaltjvm=dcevm** is not supported starting with dcevm11. There is a fu
 
 ## HOWTO
 
+### Activate G1 GC
+Use `-XX:+UseG1GC` JVM option to turn on G1 garbage collector. 
+
 ### Optimize redefinition
 
 Use `XX:+UseHotswapDeoptExclusion` to optimize redefinition by keeping `java.*` and `jdk.*` native code in code cache. This should improve performance of redefinition especially on large projects.
@@ -69,7 +72,6 @@ OpenJDK 64-Bit Server VM (build 11+0, mixed mode)
 ```
 
 ## Package info
-* G1 GC support - use `-XX:+UseG1GC` VM option to turn on G1.
 * Cuncurrent Mark Sweep GC support - use `-XX:+UseConcMarkSweepGC` VM option to turn on this feature.
 * Newest HotswapAgent 1.4.1
 
