@@ -41,7 +41,7 @@ Option **-XXaltjvm=dcevm** is not supported starting with dcevm11. There is a fu
 Use `XX:+UseHotswapDeoptExclusion` to optimize redefinition by keeping `java.*` and `jdk.*` native code in code cache. This should improve performance of redefinition especially on large projects.
 
 ### Disable integrated HotswapAgent
-Use option `-XX:+DisableHotswapAgent `
+Use option `-XX:+DisableHotswapAgent `to disable built-in HotswapAgent.
 
 ### Fallback to standard redefinition
 Use option `-XX:-AllowEnhancedClassRedefinition`to disable advanced redefinition and switch JVM to standard redefinition (only in-method modifications are allowed)
