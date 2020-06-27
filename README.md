@@ -44,7 +44,7 @@ Use `XX:+UseHotswapDeoptExclusion` to optimize redefinition by keeping `java.*` 
 Use option `-XX:+DisableHotswapAgent `
 
 ### Fallback to standard redefinition
-Use option `-XX:-AllowEnhancedClassRedefinition`
+Use option `-XX:-AllowEnhancedClassRedefinition`to disable advanced redefinition and switch JVM to standard redefinition (only in-method modifications are allowed)
 
 ### Using DCEVM image in existing java-11-openjdk
 Find out `libjvm.so` inder directory `lib/server/` and copy it to existing jdk-11 to directory `lib/dcevm`, dcevm directory must be at the same level as folder `server/` with system JVM. All should work as you are used to from dcevm8. 
