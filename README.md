@@ -39,10 +39,6 @@ Option **-XXaltjvm=dcevm** is not supported starting with dcevm11. There is a fu
 ### Activate G1 GC
 Use `-XX:+UseG1GC` JVM option to turn on G1 garbage collector. 
 
-### Optimize redefinition
-
-Use `XX:+UseHotswapDeoptExclusion` to optimize redefinition by keeping `java.*` and `jdk.*` native code in code cache. This should improve performance of redefinition especially on large projects.
-
 ### Disable integrated HotswapAgent
 Use option `-XX:+DisableHotswapAgent `to disable built-in HotswapAgent.
 
