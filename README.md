@@ -21,7 +21,7 @@ Trava is a build farm created and maintained by [HotswapProjects](https://github
 Download [windows/linux/macos binaries](https://github.com/TravaOpenJDK/trava-jdk-11-dcevm/releases), unpack and set JAVA_HOME to it's location (or add it as JDK to your IDE).
 
 ###  Dcevm11.0.9 - new JVM option -XX:HotswapAgent 
-Starting with dcevm-11.0.9 HotswapAgent support is disabled by default. JVM HotswpaAgent support could be enabled in 3 different modes:
+Starting with dcevm-11.0.9 HotswapAgent support is disabled by default. HotswpaAgent support in JVM could be enabled in 3 different modes:
 - `-XX:HotswapAgent=fatjar` turns on internal fatjar HotswapAgent
 - `-XX:HotswapAgent=core` turns on internal core HotswapAgent
 - `-XX:HotswapAgent=external` setups HotswapAgent support in JVM and leaves settings of external HotswapAgent on user. User must supply hotswap-agent.jar by additional argument e.g. `-javaagent:<path>/hotswap-agent.jar`
