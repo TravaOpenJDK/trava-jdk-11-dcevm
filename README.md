@@ -20,22 +20,25 @@ Trava is a build farm created and maintained by [HotswapProjects](https://github
 ## Install
 Download [windows/linux/macos binaries](https://github.com/TravaOpenJDK/trava-jdk-11-dcevm/releases), unpack and set JAVA_HOME to it's location (or add it as JDK to your IDE).
 
-###  Dcevm11.0.9 - new JVM option -XX:HotswapAgent 
-Starting with dcevm-11.0.9 HotswapAgent support is disabled by default. HotswpaAgent support in JVM could be enabled in 3 different modes:
+##  News since Dcevm11.0.9 
+
+### New JVM option -XX:HotswapAgent 
+Starting with dcevm-11.0.9 HotswapAgent is disabled by default. HotswpaAgent support can be enabled in 3 different modes:
 - `-XX:HotswapAgent=fatjar` turns on internal fatjar HotswapAgent
 - `-XX:HotswapAgent=core` turns on internal core HotswapAgent
-- `-XX:HotswapAgent=external` setups HotswapAgent support in JVM and leaves settings of external HotswapAgent on user. User must supply hotswap-agent.jar by additional argument e.g. `-javaagent:<path>/hotswap-agent.jar`
+- `-XX:HotswapAgent=external` setup HotswapAgent support in JVM and leaves settings of external HotswapAgent on user. User must supply hotswap-agent.jar using additional argument e.g. `-javaagent:<path>/hotswap-agent.jar`
 - `disabled` - default value.
 
+### G1 garbage collector is default
+Since dcevm11.0.9 G1 is default garbage collector, it improves compatibility with standard JDK. It is first necessary step to replace system JDK by dcevm in the future. Serial GC can be turn on by standard option `-XX:+UseSerialGC`
 
 ## Configure
 For HotswapAgent configuration look at [hotswapagent.org](http://hotswapagent.org/). HotswapAgent support can be turned on using option `-XX:HotswapAgent=[fatjar,core,external]`
 
 ## Additional Info
 
+### Changes in dcevm11
 Starting with dcevm11 option **-XXaltjvm=dcevm** is not supported anymore. There is a full java-11-openjdk distribution instead of it.
-
-**WARNING**: OpenJDK-hotswap (dcevm) is not intended to be used as a system JDK, since it uses serial GC by default, however it is possible to use *G1* now.
 
 ### Content
 * java11-openjdk-dcevm-linux.tar.gz - **linux** x64 JDK binary bundled with latest SNAPHOT release of hotswap-agent.jar
@@ -44,8 +47,8 @@ Starting with dcevm11 option **-XXaltjvm=dcevm** is not supported anymore. There
 
 ## HOWTO
 
-### Activate G1 GC
-Use `-XX:+UseG1GC` JVM option to turn on G1 garbage collector. 
+### Activate Serial GC
+Use `-XX:+UseSerialGC` JVM option to turn on Serial garbage collector. 
 
 ### Fallback to standard redefinition
 Use option `-XX:-AllowEnhancedClassRedefinition`to disable advanced redefinition and switch JVM to standard redefinition (only in-method modifications are allowed)
@@ -55,21 +58,21 @@ Find out `libjvm.so` inder directory `lib/server/` and copy it to existing jdk-1
 
 ### Check distribution
 ```
-hotswap@skybber ~ $ java -version
-Starting HotswapAgent '/usr/lib/jvm/java-11-haopenjdk/lib/hotswap/hotswap-agent.jar'
-HOTSWAP AGENT: 16:43:16.605 INFO (org.hotswap.agent.HotswapAgent) - Loading Hotswap agent {1.3.1-SNAPSHOT} - unlimited runtime class redefinition.
-HOTSWAP AGENT: 16:43:16.801 INFO (org.hotswap.agent.config.PluginRegistry) - Discovered plugins: [Hotswapper, JdkPlugin, WatchResources, ClassInitPlugin, AnonymousClassPatch, Hibernate, Hibernate3JPA, Hibernate3, Spring, Jersey1, Jersey2, Jetty, Tomcat, ZK, Logback, Log4j2, MyFaces, Mojarra, Omnifaces, Seam, ELResolver, WildFlyELResolver, OsgiEquinox, Owb, Proxy, WebObjects, Weld, JBossModules, ResteasyRegistry, Deltaspike, GlassFish, Vaadin]
-openjdk version "11" 2019-11-06
-OpenJDK Runtime Environment (build 11+0)
-OpenJDK 64-Bit Server VM (build 11+0, mixed mode)
+hotswap@skybber ~ $ java -XX:HotswapAgent=fatjar -version
+Starting HotswapAgent '/usr/lib/jvm/java-11-openjdk/lib/hotswap/hotswap-agent.jar'
+HOTSWAP AGENT: 18:06:22.007 INFO (org.hotswap.agent.HotswapAgent) - Loading Hotswap agent {1.4.2-SNAPSHOT} - unlimited runtime class redefinition.
+HOTSWAP AGENT: 18:06:22.221 INFO (org.hotswap.agent.config.PluginRegistry) - Discovered plugins: [Hotswapper, WatchResources, AnonymousClassPatch, ClassInitPlugin, JdkPlugin, Hibernate, Hibernate3JPA, Hibernate3, Spring, Jersey1, Jersey2, Jetty, Tomcat, ZK, Logback, Log4j2, MyFaces, Mojarra, Omnifaces, ELResolver, WildFlyELResolver, OsgiEquinox, Owb, Proxy, WebObjects, Weld, JBossModules, ResteasyRegistry, Deltaspike, GlassFish, Vaadin, Wicket, CxfJAXRS, FreeMarker, Undertow, MyBatis]
+openjdk version "11.0.9" 2020-10-20
+OpenJDK Runtime Environment (build 11.0.9+0)
 ```
 With HotswapAgent disabled:
 
 ```
-hotswap@skybber ~ $ java -XX:+DisableHotswapAgent -version
-openjdk version "11" 2019-11-06
-OpenJDK Runtime Environment (build 11+0)
-OpenJDK 64-Bit Server VM (build 11+0, mixed mode)
+hotswap@skybber ~ $ java -version
+openjdk version "11.0.9" 2020-10-20
+OpenJDK Runtime Environment (build 11.0.9+0)
+Dynamic Code Evolution 64-Bit Server VM (build 11.0.9+0, mixed mode)
+
 ```
 
 ## Package info
