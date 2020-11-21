@@ -9,7 +9,7 @@ matrix:
     sudo: required
     before_install:
     - sudo apt-get install -y libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev
-      libcups2-dev libasound2 libxrandr-dev
+      libcups2-dev libxrandr-dev libasound2 libasound2-dev
     - sudo ln -s /usr/lib/x86_64-linux-gnu/libasound.so.2 /usr/lib/x86_64-linux-gnu/libasound.so
   - os: windows
     env: OS_BUILD=windows
