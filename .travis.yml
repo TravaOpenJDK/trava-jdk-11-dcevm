@@ -1,5 +1,4 @@
 language: cpp
-env: SOURCE_JDK_TAG=dcevm-11.0.9+2
 matrix:
   include:
   - os: osx
@@ -25,8 +24,9 @@ before_script:
   - unset -v _JAVA_OPTIONS;
   - git clone --depth 1 --branch travaopenjdk https://github.com/TravaOpenJDK/openjdk-build.git;
 script:
-  - export JDK_BOOT_DIR="$PWD/openjdk-build/jdk-11"
+  - export SOURCE_JDK_TAG=dcevm-11.0.9+2
   - export HSWAP_AGENT_DOWNLOAD_URL=https://github.com/HotswapProjects/HotswapAgent/releases/download/RELEASE-1.4.1/hotswap-agent-1.4.1.jar
+  - export JDK_BOOT_DIR="$PWD/openjdk-build/jdk-11"
   - mkdir -p "$JDK_BOOT_DIR"
   - if [[ $OS_BUILD == "linux" ]]; then
       wget -q -O - "https://api.adoptopenjdk.net/v3/binary/version/jdk-11.0.4%2B11/linux/x64/jdk/hotspot/normal/adoptopenjdk?project=jdk" | tar xpzf - --strip-components=1 -C ${JDK_BOOT_DIR};
