@@ -20,6 +20,15 @@ TravaOpenJDK is OpenJDK for developers. It is based on dcevm and integrated Hots
 ## Install
 Download [windows/linux/macos binaries](https://github.com/TravaOpenJDK/trava-jdk-11-dcevm/releases), unpack and set JAVA_HOME to it's location (or add it as JDK to your IDE).
 
+##  News since Dcevm11.0.10
+
+Starting with 11.0.10 the dcevm can be used as replacement of standard JVM now. Therefore starting with this release the enhanced redefinition is disabled by default. However it can be enabled using one of the following options:
+
+- `-XX:+AllowEnhancedClassRedefinition` - explicitly turn on advanced redefinition
+- `-XX:HotswapAgent=fatjar` turns on advanced redefinition and internal fatjar HotswapAgent
+- `-XX:HotswapAgent=core` turns on advanced redefinition and internal core HotswapAgent
+- `-XX:HotswapAgent=external` turns on advanced redefinition and advanced redefinition setups HotswapAgent support in JVM and leaves settings of external HotswapAgent on user. 
+
 ##  News since Dcevm11.0.9 
 
 ### New JVM option -XX:HotswapAgent 
