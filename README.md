@@ -22,7 +22,7 @@ Download [windows/linux/macos binaries](https://github.com/TravaOpenJDK/trava-jd
 
 ##  News since Dcevm11.0.10
 
-Starting with 11.0.10 the dcevm can be used as a replacement of standard JVM. Therefore starting with this release the enhanced redefinition is disabled by default. However it can be enabled using one of the following options:
+Starting with 11.0.10 the TravaJDK can be used as a replacement of standard OpenJDK. Therefore starting with this release the enhanced redefinition is disabled by default. However it can be enabled using one of the following options:
 
 - `-XX:+AllowEnhancedClassRedefinition` - explicitly turn on advanced redefinition
 - `-XX:HotswapAgent=fatjar` turns on advanced redefinition and internal fatjar HotswapAgent
