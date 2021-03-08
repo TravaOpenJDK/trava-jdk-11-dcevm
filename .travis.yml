@@ -23,7 +23,7 @@ before_script:
   - unset -v _JAVA_OPTIONS;
   - git clone --depth 1 --branch travaopenjdk https://github.com/TravaOpenJDK/openjdk-build.git;
 script:
-  - export SOURCE_JDK_TAG=dcevm-11.0.10+3
+  - export SOURCE_JDK_TAG=dcevm-11.0.10+4
   - export HSWAP_AGENT_DOWNLOAD_URL=https://github.com/HotswapProjects/HotswapAgent/releases/download/RELEASE-1.4.1/hotswap-agent-1.4.1.jar
   - export HSWAP_AGENT_CORE_DOWNLOAD_URL=https://github.com/HotswapProjects/HotswapAgent/releases/download/RELEASE-1.4.1/hotswap-agent-core-1.4.1.jar
   - export JDK_BOOT_DIR="$PWD/openjdk-build/jdk-11"
