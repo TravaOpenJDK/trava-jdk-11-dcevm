@@ -23,7 +23,7 @@ Download [windows/linux/macos binaries](https://github.com/TravaOpenJDK/trava-jd
 ##  News since Dcevm11.0.9 
 
 ### New JVM option -XX:HotswapAgent 
-Starting with dcevm-11.0.9 HotswapAgent is disabled by default. HotswapAgent support can be enabled in 3 different modes:
+Starting with dcevm-11.0.9 HotswapAgent is disabled by default. HotswapAgent support can be enabled now in 3 different modes:
 - `-XX:HotswapAgent=fatjar` turns on internal fatjar HotswapAgent
 - `-XX:HotswapAgent=core` turns on internal core HotswapAgent
 - `-XX:HotswapAgent=external` setup HotswapAgent support in JVM and leaves settings of external HotswapAgent on user. User must supply hotswap-agent.jar using additional argument e.g. `-javaagent:<path>/hotswap-agent.jar`
