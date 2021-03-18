@@ -6,6 +6,7 @@ matrix:
   - os: linux
     env: OS_BUILD=linux
     dist: xenial
+    arch: arm64
     sudo: required
     before_install:
     - sudo apt-get install -y libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev
@@ -49,10 +50,10 @@ deploy:
   provider: releases
   api_key: 0b637b8b2e9a88dd4e65955e0a64c489e24f2fcb
   file_glob: true
-  file: markdbuck/workspace/target/*
+  file: openjdk-build/workspace/target/*
   skip_cleanup: true
   overwrite: true
   on:
-    repo: TravaOpenJDK/trava-jdk-11-dcevm
+    repo: markdbuck/trava-jdk-11-dcevm
     all_branches: true
     tags: true
