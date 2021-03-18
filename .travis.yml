@@ -25,7 +25,6 @@ script:
   - if [[ $OS_BUILD == "linux" ]]; then
       wget -q -O - "https://api.adoptopenjdk.net/v3/binary/version/jdk-11.0.4%2B11/linux/aarch64/jdk/hotspot/normal/adoptopenjdk?project=jdk" | tar xpzf - --strip-components=1 -C ${JDK_BOOT_DIR};
       ls -l ${JDK_BOOT_DIR};
-      export JDK_BOOT_DIR=${JDK_BOOT_DIR}/Home;
       export JAVA_HOME="${JDK_BOOT_DIR}";
     fi
   - if [[ $OS_BUILD == "osx" ]]; then
