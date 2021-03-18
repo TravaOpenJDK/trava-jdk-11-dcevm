@@ -8,7 +8,7 @@ matrix:
     sudo: required
     before_install:
     - sudo apt-get install -y libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev
-      libcups2-dev libxrandr-dev libasound2 libasound2-dev
+      libcups2-dev libxrandr-dev libasound2 libasound2-dev zip
 before_script:
   - if [[ $OS_BUILD == "windows" ]]; then
       git config --system core.longpaths true;
