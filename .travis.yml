@@ -4,11 +4,17 @@ matrix:
   - os: osx
     env: OS_BUILD=osx
   - os: linux
-    env: OS_BUILD=linux
+    env: OS_BUILD=linux FOLDER=x64
     dist: xenial
-    arch:
-      - amd64
-      - arm64
+    arch: amd64
+    sudo: required
+    before_install:
+    - sudo apt-get install -y libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev
+      libcups2-dev libxrandr-dev libasound2 libasound2-dev
+  - os: linux
+    env: OS_BUILD=linux FOLDER=aarch64
+    dist: xenial
+    arch: arm64
     sudo: required
     before_install:
     - sudo apt-get install -y libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev
@@ -32,7 +38,6 @@ script:
   - export JDK_BOOT_DIR="$PWD/openjdk-build/jdk-11"
   - mkdir -p "$JDK_BOOT_DIR"
   - if [[ $OS_BUILD == "linux" ]]; then
-      if [[ $TRAVIS_CPU_ARCH == "amd64" ]]; then FOLDER="x64"; else FOLDER="aarch64"; fi
       wget -q -O - "https://api.adoptopenjdk.net/v3/binary/version/jdk-11.0.4%2B11/linux/${FOLDER}/jdk/hotspot/normal/adoptopenjdk?project=jdk" | tar xpzf - --strip-components=1 -C ${JDK_BOOT_DIR};
       export JAVA_HOME="${JDK_BOOT_DIR}";
     fi
