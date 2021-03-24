@@ -1,14 +1,23 @@
 language: cpp
 matrix:
   include:
+  - os: osx
+    env: OS_BUILD=osx
   - os: linux
     env: OS_BUILD=linux
     dist: xenial
-    arch: arm64
+    arch:
+      - amd64
+      - arm64
     sudo: required
     before_install:
     - sudo apt-get install -y libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev
       libcups2-dev libxrandr-dev libasound2 libasound2-dev zip
+  - os: windows
+    env: OS_BUILD=windows
+    before_install:
+    - choco install cygwin
+    - C:\\tools\\cygwin\\cygwinsetup.exe -q -P make,unzip,automake,autoconf,zip
 before_script:
   - if [[ $OS_BUILD == "windows" ]]; then
       git config --system core.longpaths true;
@@ -23,8 +32,8 @@ script:
   - export JDK_BOOT_DIR="$PWD/openjdk-build/jdk-11"
   - mkdir -p "$JDK_BOOT_DIR"
   - if [[ $OS_BUILD == "linux" ]]; then
-      wget -q -O - "https://api.adoptopenjdk.net/v3/binary/version/jdk-11.0.4%2B11/linux/aarch64/jdk/hotspot/normal/adoptopenjdk?project=jdk" | tar xpzf - --strip-components=1 -C ${JDK_BOOT_DIR};
-      ls -l ${JDK_BOOT_DIR};
+      if [[ $TRAVIS_CPU_ARCH == "amd64" ]]; then FOLDER="x64"; else FOLDER="aarch64"; fi
+      wget -q -O - "https://api.adoptopenjdk.net/v3/binary/version/jdk-11.0.4%2B11/linux/${FOLDER}/jdk/hotspot/normal/adoptopenjdk?project=jdk" | tar xpzf - --strip-components=1 -C ${JDK_BOOT_DIR};
       export JAVA_HOME="${JDK_BOOT_DIR}";
     fi
   - if [[ $OS_BUILD == "osx" ]]; then
