@@ -4,12 +4,21 @@ matrix:
   - os: osx
     env: OS_BUILD=osx
   - os: linux
-    env: OS_BUILD=linux
+    env: OS_BUILD=linux FOLDER=x64
     dist: xenial
+    arch: amd64
     sudo: required
     before_install:
     - sudo apt-get install -y libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev
       libcups2-dev libxrandr-dev libasound2 libasound2-dev
+  - os: linux
+    env: OS_BUILD=linux FOLDER=aarch64
+    dist: xenial
+    arch: arm64
+    sudo: required
+    before_install:
+    - sudo apt-get install -y libx11-dev libxext-dev libxrender-dev libxtst-dev libxt-dev
+      libcups2-dev libxrandr-dev libasound2 libasound2-dev zip
   - os: windows
     env: OS_BUILD=windows
     before_install:
@@ -29,7 +38,8 @@ script:
   - export JDK_BOOT_DIR="$PWD/openjdk-build/jdk-11"
   - mkdir -p "$JDK_BOOT_DIR"
   - if [[ $OS_BUILD == "linux" ]]; then
-      wget -q -O - "https://api.adoptopenjdk.net/v3/binary/version/jdk-11.0.4%2B11/linux/x64/jdk/hotspot/normal/adoptopenjdk?project=jdk" | tar xpzf - --strip-components=1 -C ${JDK_BOOT_DIR};
+      wget -q -O - "https://api.adoptopenjdk.net/v3/binary/version/jdk-11.0.4%2B11/linux/${FOLDER}/jdk/hotspot/normal/adoptopenjdk?project=jdk" | tar xpzf - --strip-components=1 -C ${JDK_BOOT_DIR};
+      export JAVA_HOME="${JDK_BOOT_DIR}";
     fi
   - if [[ $OS_BUILD == "osx" ]]; then
       wget -q -O - 'https://api.adoptopenjdk.net/v3/binary/version/jdk-11.0.4%2B11/mac/x64/jdk/hotspot/normal/adoptopenjdk?project=jdk' | tar xpzf - --strip-components=2 -C ${JDK_BOOT_DIR};
@@ -40,7 +50,7 @@ script:
   - if [[ $OS_BUILD == "linux" || $OS_BUILD == "osx" ]]; then
       bash -c "cd openjdk-build && export LOG=info && ./makejdk-any-platform.sh --tag \"${SOURCE_JDK_TAG}\" --build-variant dcevm --branch dcevm11-jdk-11.0.10-adopt --disable-test-image
         --jdk-boot-dir ${JDK_BOOT_DIR} --hswap-agent-download-url \"${HSWAP_AGENT_DOWNLOAD_URL}\" --hswap-agent-core-download-url \"${HSWAP_AGENT_CORE_DOWNLOAD_URL}\" --configure-args '-disable-warnings-as-errors' 
-        --target-file-name java11-openjdk-dcevm-${TRAVIS_OS_NAME}.tar.gz jdk11u";
+        --target-file-name java11-openjdk-dcevm-${TRAVIS_OS_NAME}-${TRAVIS_CPU_ARCH}.tar.gz jdk11u";
     fi
   - if [[ $OS_BUILD == "windows" ]]; then
       powershell -Command "C:\tools\cygwin\bin\bash.exe -c './build_windows.sh'";
@@ -48,12 +58,12 @@ script:
 deploy:
   provider: releases
   api_key:
-    secure: eXCep6AvLdzVHjwCoPmgYiY93Q8kWN73/AkwlFrzr5b1I3sDkvtcsZ1xDbo2syf1T1+CSwILW9A3NLjRKo9OVeEJhJFQysx8DP/aPgJ3wAR+9pRrQ/w6pPFKWpaH6nq8HFydfRJMm4MDEzR0GLXZTCaxG1L9biZlDcGbDm2M0lcduLUsa7XbUynGQNXh313vu1+YjCvlBIK2rT9HgMISojRslh/1fEJwxI0TKDb+vP582/q/IXqahxSCVjakW9P1kmEl4JyFLm+MnKeHBGEQ5D0o69c3UdKp7j5RwCubky3SC8FNX1jiMNH9XWE6KpeT7p9u2LVGMr+T3sLhKLk2ce8epikuCoMkDQKnjM+OZ7vs9uoIJa7/rnsYOazSWwEUgpVyrpQpQbLJ6mEqu5YeY9hxElb26EXLae/N+/67n+imNlB1xEhC8avvqafxYn1A2l9rib7j5xv1X+A2eWQk8BfC1lGmrsq7Y1qPU1xZ03e1oiQuCqY8QoytRgi9JxxOHa5NfdiREpKF2SsrbbZkUOkF5BXg2ujDFGDlxynxTvxB0D6JiAZoq0ASnTnsND1vIP+0/BLBjbADHTLVi6JBY/wQlWj1G+eDNcbLHNMV7MQm2L6jWqFKwi4zvoYknZI9qqo+2VVNTMTD+rwXENyhfc2OZjbY6ij8lq6b868DlYA=
+    secure: "JyoyNC8EvKk66KIs49wR5jjAsn95ivvznpQVFBOqIIBFpzq6WE108lkfvX7u3Y9YfHpcu2nbaZOVuXsyUx5ZZ+yKwNZGfsPwkFYqHmO8Nh0y9gSYbzfTlabkTP+DO+4XVVJpV0P7vOcjiT1ThNZIyWUyhpjx05riur3e8N2bVlpgWOJBxztNvC4E9F2wy0BwyKjXipjFIVl1JGBeG86h78r3NpOlIrmU0/npN5W416CPjauOOyKCKpApzFU8WuxLOAX0KmXNShS0X5ZABQ6Ur4YYlu9+DuHSLvvWhhRQWYdUu+TFYklpMedKWsU4hosN2k3aUpjvwX2/kF7KHcSmN0/37CbQfJneGwfB8f3ilOq4cM3inc9bQhsQFlWJAAu+MJ/hGV2pSeWoxDDE3UvjE06+sIiTd3mYwIiy7N4F3zdCzPzHbAMFeQoeS18clTRXdhv30h+hUi232TzJjqRdzcJFqklf5U3VNDEyv4iJDo0SnxpfwZcbBuA/cCHe38McSm1vtc0zfvLxegbBkQKjf/7VE9o2VHNelibuYsD2UdsbpRpBvA9QxWhvFF/h4FEJZO60gOv2ec9SO9vLzZJT7ZlHEQQVkonjpeEhu1t88fNqiaxU7oc2VB6/x1eWt25pwsRz0GDZviY0epXzlCmwmK2qSQwl55qiR5MKF/Bzc6c="
   file_glob: true
   file: openjdk-build/workspace/target/*
   skip_cleanup: true
   overwrite: true
   on:
-    repo: TravaOpenJDK/trava-jdk-11-dcevm
+    repo: markdbuck/trava-jdk-11-dcevm
     all_branches: true
     tags: true
