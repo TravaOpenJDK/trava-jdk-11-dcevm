@@ -1,9 +1,5 @@
-Trava-jdk-11-dcevm-retired
-==========================
-Project `Trava-jdk-11-dcevm` is migrated to a new Travis build farm on https://travis-ci.com/. Currently it is not possible to install old project to new Travis farm, the reason is unknown. However it is possible to build new projects, therefore this project will be replaced by `Trava-jdk-11-dcevm`
-
-Trava-jdk-11-dcevm
-==================
+Trava-jdk-11-dcevm-newgen
+=========================
 <p align="left">
     <a href="https://travis-ci.org/TravaOpenJDK/trava-jdk-11-dcevm">
         <img src="https://api.travis-ci.org/TravaOpenJDK/trava-jdk-11-dcevm.svg" alt="Build Status">
