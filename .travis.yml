@@ -64,5 +64,5 @@ deploy:
   skip_cleanup: true
   overwrite: true
   on:
-    repo: TravaOpenJDK/trava-jdk-11-dcevm
+    repo: TravaOpenJDK/trava-jdk-11-dcevm-newgen
     tags: true
