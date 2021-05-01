@@ -1,5 +1,5 @@
-Trava-jdk-11-dcevm-newgen
-=========================
+Trava-jdk-11-dcevm
+==================
 <p align="left">
     <a href="https://travis-ci.org/TravaOpenJDK/trava-jdk-11-dcevm">
         <img src="https://api.travis-ci.org/TravaOpenJDK/trava-jdk-11-dcevm.svg" alt="Build Status">
