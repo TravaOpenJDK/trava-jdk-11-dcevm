@@ -15,12 +15,10 @@ Trava-jdk-11-dcevm-newgen
     </a>
 </p>
 
-Project `Trava-jdk-11-dcevm-newgen` is original project `Trava-jdk-11-dcevm`, renamed due the new Travis farm on https://travis-ci.com rejects original name :)
-
 TravaOpenJDK11 is OpenJDK11 for developers. Since it is based on **dcevm** and integrated **HotswapAgent**, it allows **advanced hotswap** like method-field addition and many more. Trava is a build farm created and maintained by [HotswapProjects](https://github.com/HotswapProjects). Build is transparent as much as possible. [dcevm-11 source code](https://github.com/HotswapProjects/openjdk-jdk11u-dcevm) is built on [Travis](https://travis-ci.org/TravaOpenJDK/trava-jdk-11-dcevm) and the produced JDK images are bundled with [HotswapAgent](https://github.com/HotswapProjects/HotswapAgent). Building is exclusively based on [modified](https://github.com/TravaOpenJDK/openjdk-build/tree/travaopenjdk) AdoptOpenJDK [scripts](https://github.com/AdoptOpenJDK/openjdk-build).
 
 ## Install
-Download [windows/linux/macos binaries](https://github.com/TravaOpenJDK/trava-jdk-11-dcevm-newgen/releases), unpack and set JAVA_HOME to it's location (or add it as JDK to your IDE).
+Download [windows/linux/macos binaries](https://github.com/TravaOpenJDK/trava-jdk-11-dcevm/releases), unpack and set JAVA_HOME to it's location (or add it as JDK to your IDE).
 
 ##  News since Dcevm11.0.9 
 
