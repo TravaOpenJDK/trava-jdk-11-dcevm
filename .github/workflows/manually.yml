@@ -32,11 +32,11 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: '${{ steps.buildJDK.outputs.JdkPackageFileName }}'
-        path: ${{ github.workspace }}/openjdk-build/workspace/artifacts/${{ steps.buildJDK.outputs.JdkPackageFileName }}
+        path: ${{ github.workspace }}/temurin-build-dcevm/workspace/artifacts/${{ steps.buildJDK.outputs.JdkPackageFileName }}
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: ${{ github.workspace }}/openjdk-build/workspace/artifacts/${{ steps.buildJDK.outputs.JdkPackageFileName }}
+        files: ${{ github.workspace }}/temurin-build-dcevm/workspace/artifacts/${{ steps.buildJDK.outputs.JdkPackageFileName }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
