@@ -1,3 +1,4 @@
+# This file is deprecated now since TravaOpenJDK is moving to GitHub Actions
 export PATH=/cygdrive/c/tools/cygwin/bin:$PATH
 
 wget -q -O OpenJDK11_x64_Windows.zip "https://api.adoptopenjdk.net/v3/binary/version/jdk-11.0.6%2B10/windows/x64/jdk/hotspot/normal/adoptopenjdk?project=jdk"

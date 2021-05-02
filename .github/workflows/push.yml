@@ -1,0 +1,33 @@
+name: "build-dcevm on push"
+
+on: push
+
+jobs:
+  dcevm:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-16.04, macos-10.15, windows-2016]
+        javaToBuild: [jdk11u, jdk16u]
+    steps:
+    - uses: actions/checkout@v1
+    - uses: TravaOpenJDK/build-dcevm@v1
+      id: buildJDK
+      with:
+        impl: dcevm
+        javaToBuild: ${{ matrix.javaToBuild}}
+        dcevm_branch: 'dcevm11-jdk-11.0.11-adopt'
+        dcevm_tag: 'dcevm-11.0.11+1'
+    - run: ${{ steps.buildJDK.outputs.BuildJDKDir }}/bin/java -version
+    - uses: actions/upload-artifact@v2
+      with:
+        name: '${{ steps.buildJDK.outputs.JdkPackageFileName }}'
+        path: ${{ github.workspace }}/openjdk-build/workspace/artifacts/${{ steps.buildJDK.outputs.JdkPackageFileName }}
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: ${{ github.workspace }}/openjdk-build/workspace/artifacts/${{ steps.buildJDK.outputs.JdkPackageFileName }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
