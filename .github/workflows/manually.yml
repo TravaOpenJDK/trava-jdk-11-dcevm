@@ -21,7 +21,7 @@ jobs:
         javaToBuild: [jdk11u, jdk16u]
     steps:
     - uses: actions/checkout@v1
-    - uses: TravaOpenJDK/build-dcevm@v1
+    - uses: TravaOpenJDK/action-build-dcevm@v1
       id: buildJDK
       with:
         impl: dcevm
