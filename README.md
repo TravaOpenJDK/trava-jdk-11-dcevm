@@ -88,7 +88,7 @@ clicks:
 
 * Fork this repository
 * Go to Actions and run action manually
-* or create a tagged commit and wait for GitHub Actions to build your binaries!
+* or update push.yml, create a tagged commit, push changes and wait for GitHub Actions to build your binaries.
 
 
 ## HOWTO deploy a new release
