@@ -87,15 +87,11 @@ It is not necessary to use supplied binaries, you can build your own binaries. I
 clicks:
 
 * Fork this repository
-* Create user account on [Travis](https://travis-ci.org/)
-* Change the **deploy** part in `.travis.yml` to upload the result to your repository
-* Create a tagged commit and wait for Travis to build your binaries!
+* Go to Actions and run action manually
+* or create a tagged commit and wait for GitHub Actions to build your binaries!
 
 
 ## HOWTO deploy a new release
-
-### New branch
-If a new branch is created in source repository, then modify `--branch` parameter in `.travis.yml` to the new branch.
 
 ### Release with existing TAG
 * If repository has some updates since last tagged, then move tag:
@@ -105,10 +101,10 @@ If a new branch is created in source repository, then modify `--branch` paramete
     git push origin master --tags
 ```
 * Cleanup binaries from Releases/
-* Trigger tagged job on Travis (if not triggered automatically)
+* Trigger tagged job
 
 ### Release with new TAG
 Let's jdk source repository has new tag of value **TAGVAL**
-* Set variable `SOURCE_JDK_TAG=` in `.tarvis.yml` to **TAGVAL**
+* Update variables `dcevm_branch` and `dcevm_tag` in `push.yml` to **TAGVAL**
 * Commit and tag commit with **TAGVAL**
 * Appropriate a new tagged job should be created on Travis automatically
