@@ -29,7 +29,7 @@ Starting with dcevm-11.0.9 HotswapAgent is disabled by default. HotswapAgent sup
 - `-XX:HotswapAgent=external` setup HotswapAgent support in JVM and leaves settings of external HotswapAgent on user. User must supply hotswap-agent.jar using additional argument e.g. `-javaagent:<path>/hotswap-agent.jar`
 - `disabled` - default value.
 
-`HotswapAgent=core` mode has no plugins except of core JVM plugins. It is faster since less scanning tasks and less class copying are necessary to be done. Additional plugins must be configured as maven dependencies in `pom.xml`. In `HotswapAgent=core` mode all plugins are available from start, it slows down application start little bit.
+`HotswapAgent=core` mode has no plugins except of core JVM plugins. It is faster since less scanning tasks and less class copying are necessary to be done. Additional plugins must be configured as maven dependencies in `pom.xml`. In `HotswapAgent=fatjar` mode all plugins are available from start, it slows down application start little bit.
 
 ### G1 garbage collector is default
 Since dcevm11.0.9 G1 is default garbage collector, it improves compatibility with standard JDK. It is first necessary step to replace system JDK by dcevm in the future. Serial GC can be turn on by standard option `-XX:+UseSerialGC`
