@@ -17,8 +17,8 @@ jobs:
       with:
         impl: dcevm
         javaToBuild: ${{ matrix.javaToBuild}}
-        dcevm_branch: 'dcevm11-jdk-11.0.11-adopt'
-        dcevm_tag: 'dcevm-11.0.11+1'
+        dcevm_branch: 'dcevm11-jdk-11.0.15-adoptium'
+        dcevm_tag: 'dcevm-11.0.15+1'
     - run: ${{ steps.buildJDK.outputs.BuildJDKDir }}/bin/java -version
     - uses: actions/upload-artifact@v2
       with:
