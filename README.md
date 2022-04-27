@@ -78,7 +78,6 @@ Dynamic Code Evolution 64-Bit Server VM (build 11.0.9+0, mixed mode)
 ```
 
 ## Package info
-* Cuncurrent Mark Sweep GC support - use `-XX:+UseConcMarkSweepGC` VM option to turn on this feature.
 * Newest HotswapAgent 1.4.1
 
 
